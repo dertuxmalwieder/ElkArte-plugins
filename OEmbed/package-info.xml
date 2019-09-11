@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.elkarte.net/site/package-info">
+<package-info xmlns="http://www.elkarte.net/site/package-info" xmlns:elk="http://www.elkarte.net/">
+  <id>Cthulhux:OEmbed</id>
+  <name>OEmbed Support</name>
+  <type>modification</type>
+  <version>1.0.6</version>
+  <license><![CDATA[
+  /**
+  * OEmbed Support
+  *
+  * @license WTFPL http://www.wtfpl.net/txt/copying/
+  *
+  * @version 1.0.5
+  */
+  ]]></license>
+
+  <install for="1.0 - 1.1.99">
+    <readme type="file" parsebbc="true">readme.txt</readme>
+    <require-file name="OEmbed.Hook.php" destination="SOURCEDIR" />
+    <hook hook="integrate_pre_bbc_parser" function="oembed_pre_parse" file="SOURCEDIR/OEmbed.Hook.php" />
+  </install>
+
+  <uninstall for="1.0 - 1.1.99">
+    <hook reverse="true" hook="integrate_pre_bbc_parser" function="oembed_pre_parse" file="SOURCEDIR/OEmbed.Hook.php" />
+    <remove-file name="SOURCEDIR/OEmbed.Hook.php" />
+  </uninstall>
+
+</package-info>
